@@ -1,83 +1,37 @@
 ﻿using Blackjack;
+using System.Numerics;
 
 
-
-var dealer = new Dealer(); ;
-var player = new Player();
-var deck = new Deck();
-
-
-
-
-dealer.TakeCard(deck.TakeCard());
-dealer.TakeCard(deck.TakeCard());
-
-player.TakeCard(deck.TakeCard());
-player.TakeCard(deck.TakeCard());
-
-var bankFlag = false;
-var playerFlag = false;
-while (true)
+void InitGame()
 {
-    if (!bankFlag)
+
+    var deck = new Deck();
+    var dealer = new Dealer() { Name = "Dealer" };
+
+    Player player1;
+    while (true)
     {
-        if(dealer.Score >= 15)
-        {
-            bankFlag = true;
-        }
+        Console.WriteLine("Write name: ");
+        var name = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(name))
+            Console.WriteLine("error name");
         else
         {
-            dealer.TakeCard(deck.TakeCard());
+            player1 = new Player() { Name = name };
+            break;
         }
+
     }
-
-    if(!playerFlag)
-    {
-        Console.WriteLine($"Total: {player.Score}\nTake another card? [1-yes 2-no]");
-        var choose = Console.ReadLine();
-        if (choose == "1")
-            player.TakeCard(deck.TakeCard());
-        else if (choose == "2") 
-            playerFlag = true;
-        else
-        {
-            Console.WriteLine("Error");
-        }
-    }
+    
+    var game = new Game();
 
 
-    if (bankFlag && playerFlag)
-        break;
+    game.StartRound(deck, dealer, new Player[] {player1});
+
 }
 
-if(dealer.Score == player.Score)
-{
-    Console.WriteLine("Draw");
-}
-else
-{
-    if (dealer.Score <= 21)
-    {
-        if(player.Score > 21)
-            Console.WriteLine("dealer Winner");
-        else
-        {
-            if (dealer.Score > player.Score)
-            Console.WriteLine("dealer Winner");
-        else
-            Console.WriteLine("Player Winner");
-        }
-    }
-    else
-    {
-        if (dealer.Score > player.Score)
-            Console.WriteLine("Player Winner");
-        else
-            Console.WriteLine("dealer Winner");
-    }
-}
-
-Console.WriteLine($"bank: {dealer.Score}\nplayer: {player.Score}");
+InitGame();
 
 //STOP
 Console.Write("click Enter, for close");

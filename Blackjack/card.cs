@@ -17,8 +17,9 @@ namespace Blackjack
         public string Name
         {
             get => _name;
-            protected set {
-                _name = value; 
+            protected set
+            {
+                _name = value;
             }
         }
 
@@ -50,7 +51,7 @@ namespace Blackjack
 
 
         //kopírovaní pro hráče
-        public Card(Card card):this(card.Name)
+        public Card(Card card) : this(card.Name)
         {
 
         }

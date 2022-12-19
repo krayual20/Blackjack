@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Blackjack
 {
@@ -135,7 +136,26 @@ namespace Blackjack
                         Console.WriteLine("dealer Winner");
                 }
                 Console.WriteLine($"{players[i].Name}: {players[i].Score}\n{dealer.Name}: {dealer.Score}");
+                sendToFile(textFile1, players[i].Name);
             }
+        }
+
+        string textFile1 = "../../../TextFile1.txt";
+
+        void sendToFile(string fileName, string name)
+        {
+            if (File.Exists(fileName))
+            {
+                string clientHeader = name + Environment.NewLine;
+                File.AppendAllText(fileName, clientHeader);
+
+            }
+        }
+
+        public void Ladder()
+        {
+            string ladder = File.ReadAllText("../../../TextFile1.txt");
+            Console.WriteLine(ladder);
         }
     }
 }

@@ -31,7 +31,7 @@ void InitGame()
 }
 while (true)
 {
-    Console.WriteLine("1-Play, 2-Rules, 3-Yarrow, 4-END");
+    Console.WriteLine("1-Play, 2-Rules, 3-Ladder, 4-END");
     string menu = Console.ReadLine();
     if (menu == "1")
     {
@@ -41,8 +41,10 @@ while (true)
         Console.WriteLine("Rules. Blackjack hands are scored by their point total.\nThe hand with the highest total wins as long as it doesn't exceed 21;\na hand with a higher total than 21 is said to bust.\nCards 2 through 10 are worth their face value, and face cards (jack, queen, king)\nare also worth 10.");
     }else if(menu == "3")
     {
-        Console.WriteLine("Not working yet");
-    }else if(menu == "4")
+        var game = new Game();
+        game.Ladder();
+    }
+    else if(menu == "4")
     {
         System.Environment.Exit(1);
     }

@@ -8,7 +8,7 @@ namespace Blackjack
 {
     internal class Dealer
     {
-        private string _name = "Player1";
+        private string _name = "Dealer";
         private List<Card> _hand;
 
         public string Name

@@ -11,7 +11,7 @@ namespace Blackjack
         private string _name;
         private int _value;
 
-
+        //karty
         private string[] _names = new string[] { "2", "3", "4", "5", "7", "8", "9", "10", "J", "Q", "K", "A" };
 
         public string Name
@@ -22,7 +22,7 @@ namespace Blackjack
                 _name = value;
             }
         }
-
+   
         public int Value { get => _value; }
 
         public Card(string name)

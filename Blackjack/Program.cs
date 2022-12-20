@@ -4,6 +4,7 @@ using System.Numerics;
 
 void InitGame()
 {
+    //nastaveni balicku a dealerem a hrac
     var deck = new Deck();
     var dealer = new Dealer() { Name = "Dealer" };
 
@@ -23,14 +24,16 @@ void InitGame()
 
     }
     
+    //start hry
     var game = new Game();
 
-
+    //nastartuje se hra 
     game.StartRound(deck, dealer, new Player[] {player1});
 
 }
 while (true)
 {
+    //menu
     Console.WriteLine("1-Play, 2-Rules, 3-Ladder, 4-END");
     string menu = Console.ReadLine();
     if (menu == "1")

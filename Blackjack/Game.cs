@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+//for... je proto kdyby bylo vice hracu nez jeden.
+
 namespace Blackjack
 {
     internal class Game
@@ -17,6 +19,8 @@ namespace Blackjack
         }
 
         //ostatni void = private, automaticky :)
+
+        //priprave karet 2krat si liznou vsichni kartu
         void AllTakeCards(int count, Deck deck, Dealer dealer, Player[] players)
         {
             for (var j = 0; j < players.Length; j++)
@@ -32,7 +36,7 @@ namespace Blackjack
             }
         }
 
-
+        //kolik overeni odpovedi vsech hracu
         bool[] InitFlags(int count)
         {
             var playerFlag = new bool[count];
@@ -53,6 +57,7 @@ namespace Blackjack
             return flag;
         }
 
+        //umela intelegence dealera
         void DealerTurn(Deck deck, Dealer dealer, bool dealerFlag)
         {
             if (dealer.Score >= 15)
@@ -65,6 +70,7 @@ namespace Blackjack
             }
         }
 
+        //pridani karty navis, spoluprace s hracem
         void PlayerTurn(Deck deck, Player[] players, bool[] playerFlag)
         {
             for (var i = 0; i < playerFlag.Length; i++)
@@ -91,6 +97,7 @@ namespace Blackjack
             }
         }
 
+        //liznuti si karty
         void TakeCards(Deck deck, Dealer dealer, Player[] players)
         {
             AllTakeCards(2, deck, dealer, players);
@@ -112,6 +119,7 @@ namespace Blackjack
             }
         }
 
+        //result hry, kdo vyhraje
         void CalculateResults(Dealer dealer, Player[] players)
         {
             for (var i = 0; i < players.Length; i++)
@@ -140,6 +148,7 @@ namespace Blackjack
             }
         }
 
+        //poslat do textaku
         string textFile1 = "../../../TextFile1.txt";
 
         void sendToFile(string fileName, string name)
@@ -152,6 +161,7 @@ namespace Blackjack
             }
         }
 
+        //vypsat z textaku
         public void Ladder()
         {
             string ladder = File.ReadAllText("../../../TextFile1.txt");

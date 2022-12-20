@@ -8,6 +8,7 @@ namespace Blackjack
 {
     internal class Deck
     {
+        //balicek z karet
         private List<Card> _cards;
         private Random _rand;
 

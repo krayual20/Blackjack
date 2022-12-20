@@ -11,11 +11,15 @@ namespace Blackjack
         private string _name = "Player1";
         private List<Card> _hand;
 
+
+        //set hrace
         public string Name
         {
             get { return _name; }
             set { 
                 
+
+                //pokud vznikne chyba
                 if(string.IsNullOrEmpty(value))
                     throw new ArgumentNullException("name cannot be empty");   
                 _name = value;
@@ -62,7 +66,7 @@ namespace Blackjack
             _hand.Add(card);// do ruky pridavam karty
         }
 
-
+        //vycistit ruka
         public void ClearHand() => _hand.Clear();
 
     }
